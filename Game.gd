@@ -1,20 +1,19 @@
 extends Spatial
 
 var wings = 1
-var bombs = 0
 var goldrings = 0
 var health = 3
 
-
 func _ready():
 	Global.rings = 0
+	Global.bombs = 1
 	get_node("AnimationPlayer").play("start")
 	add_to_group("Gamestate")
 	update_GUI()
 	
 func update_GUI():
 	get_tree().call_group("GUI", "update_gui_wings", wings)
-	get_tree().call_group("GUI", "update_gui_bombs", bombs)
+	get_tree().call_group("GUI", "update_gui_bombs", Global.bombs)
 	get_tree().call_group("GUI", "update_gui_rings", Global.rings)
 	get_tree().call_group("GUI", "update_gui_goldrings", goldrings)
 	get_tree().call_group("GUI", "update_gui_health", health)
@@ -36,11 +35,11 @@ func wings_down():
 	update_GUI()
 	
 func bombs_up():
-	bombs += 1
+	Global.bombs += 1
 	update_GUI()
 	
 func bombs_down():
-	bombs -= 1
+	Global.bombs -= 1
 	update_GUI()
 
 func rings_up():

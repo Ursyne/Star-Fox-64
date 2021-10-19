@@ -14,8 +14,7 @@ func explode() -> void:
 	$Area/CollisionShape2.disabled = false
 	yield(get_tree().create_timer(1.5),"timeout")
 	queue_free()
-	print("toc")
-
+	
 func _on_Area_body_entered(body):
 	
 	if body.is_in_group("Enemies"):
@@ -28,5 +27,4 @@ func _on_Area_body_entered(body):
 		explode()
 
 func _on_Timer_timeout():
-	print("tic")
 	explode()
