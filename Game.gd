@@ -36,6 +36,7 @@ func wings_down():
 	
 func bombs_up():
 	Global.bombs += 1
+	$BombPickup.play()
 	update_GUI()
 	
 func bombs_down():

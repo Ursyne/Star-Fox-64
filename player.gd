@@ -70,6 +70,7 @@ func _on_Area_body_entered(body):
 		if body.is_in_group("GoldRing"):
 			get_tree().call_group("Gamestate", "goldrings_up")
 		if body.is_in_group("SmartBomb"):
+			print("tick")
 			get_tree().call_group("Gamestate", "bombs_up")
 			
 func explode() -> void:

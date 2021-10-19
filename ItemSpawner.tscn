@@ -7,6 +7,7 @@ onready var main = get_tree().current_scene
 
 var Rings = load(\"res://SilverRings.tscn\")
 var GoldRings = load(\"res://GoldRings.tscn\")
+var SmartBombs = load(\"res://SmartBomb.tscn\")
 var RingTicker = 0
 	
 func spawnRing():
@@ -18,6 +19,11 @@ func spawnGoldRing():
 	var goldrings = GoldRings.instance()
 	main.add_child(goldrings)
 	goldrings.transform.origin = transform.origin + Vector3(rand_range(-10,10), rand_range(-5,5), 0)
+	
+func spawnSmartBomb():
+	var smartbomb = SmartBombs.instance()
+	main.add_child(smartbomb)
+	smartbomb.transform.origin = transform.origin + Vector3(rand_range(-10,10), rand_range(-5,5), 0)
 
 func _on_Timer_timeout():
 	RingTicker += 1
@@ -26,7 +32,9 @@ func _on_Timer_timeout():
 		RingTicker = 0
 	else:
 		spawnRing()
-	
+
+func _on_Timer2_timeout():
+	spawnSmartBomb()
 "
 
 [node name="ItemSpawner" type="Spatial"]
@@ -36,4 +44,9 @@ script = SubResource( 1 )
 wait_time = 5.0
 autostart = true
 
+[node name="Timer2" type="Timer" parent="."]
+wait_time = 12.0
+autostart = true
+
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
+[connection signal="timeout" from="Timer2" to="." method="_on_Timer2_timeout"]
