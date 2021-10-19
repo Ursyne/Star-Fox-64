@@ -42,11 +42,11 @@ func _physics_process(_delta):
 		get_tree().call_group("Gamestate", "spinright")
 		$Spin.play()
 	if Input.is_action_just_pressed("ui_cancel"):
-		$Shoot.play()
+		$Bomb.play()
 		var bomb = Bomb.instance()
 		main.add_child(bomb)
 		bomb.transform = global_transform
-		bomb.velo = bomb.transform.basis.z * -75
+		bomb.velo = bomb.transform.basis.z * -50
 
 func Shooting():
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Arwing/Arwing.obj" type="ArrayMesh" id=1]
+[ext_resource path="res://Sounds/Bomb.wav" type="AudioStream" id=2]
 [ext_resource path="res://Sounds/arwing single laser one shot.wav" type="AudioStream" id=3]
 [ext_resource path="res://Explosion.tscn" type="PackedScene" id=4]
 [ext_resource path="res://player.gd" type="Script" id=5]
@@ -142,5 +143,8 @@ spot_range = 2.45895
 spot_angle = 12.1091
 
 [node name="Explosion" parent="." instance=ExtResource( 4 )]
+
+[node name="Bomb" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 2 )
 
 [connection signal="body_entered" from="Area" to="." method="_on_Area_body_entered"]
