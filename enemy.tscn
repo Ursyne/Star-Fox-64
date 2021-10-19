@@ -4,10 +4,10 @@
 [ext_resource path="res://Explosion.tscn" type="PackedScene" id=2]
 [ext_resource path="res://enemy.gd" type="Script" id=4]
 
-[sub_resource type="SphereShape" id=2]
+[sub_resource type="SphereShape" id=1]
 radius = 0.683308
 
-[sub_resource type="SphereShape" id=3]
+[sub_resource type="SphereShape" id=2]
 
 [node name="enemy" type="KinematicBody" groups=[
 "Enemies",
@@ -22,7 +22,7 @@ material/1 = null
 
 [node name="CollisionShape" type="CollisionShape" parent="."]
 transform = Transform( 4.21088, 0, 0, 0, 4.21088, 0, 0, 0, 4.21088, 0, 0, 0 )
-shape = SubResource( 2 )
+shape = SubResource( 1 )
 
 [node name="DirectionalLight" type="SpotLight" parent="."]
 transform = Transform( 0.774404, 0, 0.632692, 0, 1, 0, -0.632692, 0, 0.774404, 4.34548, -0.849078, 5.63374 )
@@ -34,6 +34,7 @@ spot_angle = 29.3
 [node name="Explosion" parent="." instance=ExtResource( 2 )]
 
 [node name="Timer" type="Timer" parent="."]
+wait_time = 1.75
 autostart = true
 
 [node name="Gun" type="Spatial" parent="."]
@@ -43,7 +44,7 @@ transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 6.08941 )
 
 [node name="CollisionShape" type="CollisionShape" parent="Area"]
 transform = Transform( 2.82915, 0, 0, 0, 2.82915, 0, 0, 0, 2.82915, 0, 0, 0 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 
 [connection signal="timeout" from="Timer" to="." method="_on_Timer_timeout"]
 [connection signal="area_entered" from="Area" to="." method="_on_Area_area_entered"]

@@ -8,6 +8,7 @@ var velo = Vector3()
 onready var guns  = [$Gun2,$Gun3]
 onready var main = get_tree().current_scene
 var Bullet = load("res://Bullet.tscn")
+var Bomb = load("res://Bomb.tscn")
 var cooldown = 0
 const COOLDOWN = 8
 
@@ -40,6 +41,12 @@ func _physics_process(_delta):
 	if Input.is_action_just_pressed("ui_end"):
 		get_tree().call_group("Gamestate", "spinright")
 		$Spin.play()
+	if Input.is_action_just_pressed("ui_cancel"):
+		$Shoot.play()
+		var bomb = Bomb.instance()
+		main.add_child(bomb)
+		bomb.transform = global_transform
+		bomb.velo = bomb.transform.basis.z * -75
 
 func Shooting():
 

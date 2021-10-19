@@ -25,7 +25,7 @@ func _on_Timer_timeout():
 	var bullet = BulletEnemy.instance()
 	get_parent().add_child(bullet)
 	bullet.transform = global_transform
-	bullet.velo = bullet.transform.basis.z * 300
+	bullet.velo = bullet.transform.basis.z * 225
 
 func _on_Area_area_entered(area):
 	if area.is_in_group("Player"):
